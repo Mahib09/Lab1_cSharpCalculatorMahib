@@ -8,7 +8,11 @@ html {
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
@@ -19,4 +23,50 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+.header {
+  font-size: 2.5rem;
+  text-decoration: underline;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+.operators {
+  height: 50px;
+  width: 50px;
+  border: solid 1px black;
+  background-color: rgb(145, 145, 111);
+  color: #333333;
+  transition: all 0.3s ease-in-out;
+}
+.operators:hover {
+  background-color: rgb(29, 29, 23);
+  color: rgb(194, 192, 192);
+}
+.message,
+.message:focus {
+  background-color: beige;
+  border: none;
+  color: #fb2525;
+  outline: none;
+  cursor: default;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  align-content: center;
+  gap: 20px;
+  padding-top: 80px;
+  height: 50vh;
+  width: 50%;
+  background-color: beige;
+  border: 10px solid rgb(145, 145, 111);
+  margin-left: 320px;
+}
+#result,
+#result:focus {
+  cursor: default;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  outline: none;
 }

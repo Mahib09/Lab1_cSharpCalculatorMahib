@@ -1,31 +1,51 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using cSharpCalculatorMahib.Models;
 
-namespace cSharpCalculatorMahib.Controllers;
-
-public class HomeController : Controller
+namespace cSharpCalculatorMahib.Controllers
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    public class HomeController : Controller
     {
-        _logger = logger;
-    }
+        public IActionResult Index()
+        {
+            return View();
+        }
 
-    public IActionResult Index()
-    {
-        return View();
-    }
+        [HttpPost]
+        public IActionResult Calculate(double InputValue1, double InputValue2, string op)
+        {
+            double result = 0;
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
+            switch(op)
+            {
+                case "+":
+                    result = InputValue1 + InputValue2;
+                    break;
+                case "-":
+                    result = InputValue1 - InputValue2;
+                    break;
+                case "*":
+                    result = InputValue1 * InputValue2;
+                    break;
+                case "/":
+                    if (InputValue2 != 0)
+                    {
+                        result = InputValue1 / InputValue2;
+                    }
+                    else
+                    {
+                        ViewBag.Error = "Error: Division by zero";
+                        return View("Index");
+                    }
+                    break;
+                default:
+                    ViewBag.Error = "Invalid operator";
+                    return View("Index");
+            }
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            ViewData["ResultView"] = result;
+            ViewData["error"] = ViewBag.error;
+            return View("Index");
+            
+
+        }
     }
 }

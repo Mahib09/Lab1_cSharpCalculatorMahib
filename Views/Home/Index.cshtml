@@ -3,6 +3,31 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to Mahib's Calculator</h1>
+    <h1 class="header">Welcome to Mahib's Calculator</h1>
+    <br>
+
+    <form asp-action="Calculate" asp-controller="Home" method="post" class="form">
+        <div>
+        <label for="firstNumber">First Number:</label>
+        <input name="InputValue1" type="number" id="firstNumber" required/>
+        <label for="secondNumber">Second Number:</label>
+        <input name="InputValue2" type="number" id="secondNumber" required/>
+        </div>
+        <br><br>
+        <div><button type="submit" name="op" class="operators" value="+">+</button>
+        <button type="submit" name="op" class="operators" value="-">-</button>
+        <button type="submit" name="op" class="operators" value="*">*</button>
+        <button type="submit" name="op" class="operators" value="/">/</button>
+        </div>
+        <br><br>
+        <div>
+        <label for="result">Result:</label>
+        <input name="result" type="text" id="result" value="@ViewData["ResultView"]" readonly/>
+        <br><br>
+        <input type="text" value='@ViewData["error"]' readonly class="message">
+        </div>
+        
+    </form>
+
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
